@@ -1,5 +1,4 @@
 import './App.css';
-import ReactDOM from 'react-dom/client';
 import React, { Component } from 'react'
 import Navbar from './components/Navbar';
 import NewsBody from './components/NewsBody';

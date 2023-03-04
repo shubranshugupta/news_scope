@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
-import { BrowserView, MobileView } from 'react-device-detect';
+import { Link, Navigate } from 'react-router-dom'
+import { isMobile } from 'react-device-detect';
 
 export class Navbar extends Component {
     static propTypes = {
@@ -43,8 +43,8 @@ export class Navbar extends Component {
                 style={this.props.theme === 'light' ? this.navbarStyle.navLightTheme : this.navbarStyle.navDarkTheme}>
                 <div className="container-fluid">
                     <a className="navbar-brand" href="/">
-                        <img src={this.props.theme==='light'?'noBackgroundDark.png':'noBacgroundLight.png'} 
-                        alt="Logo" width="40" height="40" className="d-inline-block align-text-top" />
+                        <img src={this.props.theme === 'light' ? 'noBackgroundDark.png' : 'noBacgroundLight.png'}
+                            alt="Logo" width="40" height="40" className="d-inline-block align-text-top" />
                     </a>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
@@ -72,40 +72,17 @@ export class Navbar extends Component {
                                 </ul>
                             </li>
                         </ul>
-                        <BrowserView>
-                            <div className="d-flex">
-                                <div className="p-2">
-                                    <button className={`material-symbols-outlined btn btn-outline-${this.props.theme} 
-                            text-${this.props.theme === 'light' ? 'dark' : 'light'}`}
-                                        onClick={this.props.toggleTheme}>
-                                        {this.props.theme === 'light' ? 'dark_mode' : 'light_mode'}
-                                    </button>
-                                </div>
-                                <div className="p-2">
-                                    <form className="d-flex" role="search">
-                                        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                                        <button className="btn btn-outline-success" type="submit">Search</button>
-                                    </form>
-                                </div>
+
+                        <div className={isMobile ? '' : 'd-flex'}>
+                            <div className="p-2">
+                                <button className={`material-symbols-outlined btn btn-outline-${this.props.theme} 
+                                    text-${this.props.theme === 'light' ? 'dark' : 'light'}`}
+                                    onClick={this.props.toggleTheme}>
+                                    {this.props.theme === 'light' ? 'dark_mode' : 'light_mode'}
+                                </button>
                             </div>
-                        </BrowserView>
-                        <MobileView>
-                            <div>
-                                <div className="p-2">
-                                    <button className={`material-symbols-outlined btn btn-outline-${this.props.theme} 
-                            text-${this.props.theme === 'light' ? 'dark' : 'light'}`}
-                                        onClick={this.props.toggleTheme}>
-                                        {this.props.theme === 'light' ? 'dark_mode' : 'light_mode'}
-                                    </button>
-                                </div>
-                                <div className="p-2">
-                                    <form className="d-flex" role="search">
-                                        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                                        <button className="btn btn-outline-success" type="submit">Search</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </MobileView>
+                        </div>
+
                     </div>
                 </div>
             </nav>
