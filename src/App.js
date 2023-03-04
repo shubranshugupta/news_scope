@@ -8,6 +8,8 @@ import {
   Route
 } from "react-router-dom";
 import LoadingBar from 'react-top-loading-bar'
+import { About } from './components/About';
+import Footer from './components/Footer';
 
 export default class App extends Component {
   constructor() {
@@ -64,7 +66,7 @@ export default class App extends Component {
             } />
 
             <Route exact path="/about" element={
-              <h1>about</h1>
+              <About theme={this.state.theme} setProgress={this.setProgress}/>
             } />
 
             <Route exact path="/business" element={
@@ -92,6 +94,7 @@ export default class App extends Component {
             } />
           </Switch>
 
+          <Footer theme={this.state.theme} />
         </Router>
       </>
     )
