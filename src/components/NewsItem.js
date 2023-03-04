@@ -27,7 +27,7 @@ export class NewsItem extends Component {
             <div className="card m-3" href={newsUrl}
             style={this.props.theme==='light'?this.newsItemStyle.lightTheme:this.newsItemStyle.darkTheme}>
                 <img src={imageUrl ? imageUrl : "default_img.jpg"} className="card-img-top" ref={img => this.img = img}
-                onError={()=>{this.img.src = "default_img.jpg"}} height="150px" width="200px"/>
+                onError={()=>{this.img.src = "default_img.jpg"}} height="150px" width="200px" alt='news'/>
                 <div className="card-body">
                     <span className="position-absolute top-0 translate-middle badge rounded-pill" style={{left:'50%', zIndex:'1', backgroundColor:'#F73D93'}}>
                         {source}
@@ -37,7 +37,7 @@ export class NewsItem extends Component {
                         By {author ? author : "Unknown"} on {date ? new Date(date).toGMTString() : "Unknown"}
                     </small></p>
                     <p className="card-text">{desc ? desc.slice(0, 60)+"..." : "No Description"}</p>
-                    <a href={newsUrl} target="_blank" rel="noopener" className="btn btn-sm btn-outline-info">Go To Website</a>
+                    <a href={newsUrl} target="_blank" rel="noreferrer" className="btn btn-sm btn-outline-info">Go To Website</a>
                 </div>
             </div>
         )
