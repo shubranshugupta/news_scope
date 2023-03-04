@@ -24,13 +24,19 @@ cd newsscope
 npm install
 ```
 
-4. Start the development server:
+4. Add your News API key to the `.env.local` file:
+
+```txt
+REACT_APP_NEWS_API=your-api-key
+```
+
+5. Start the development server:
 
 ```bash
 npm start
 ```
 
-5. Open your browser and go to http://localhost:3000
+6. Open your browser and go to http://localhost:3000
 
 ## Usage
 
